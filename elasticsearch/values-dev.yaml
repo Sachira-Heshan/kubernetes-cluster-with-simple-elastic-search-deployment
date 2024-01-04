@@ -1,7 +1,6 @@
 elasticsearch:
-   namespace: default
-   replicas: 1
-   name: elasticsearch
+   namespace: dev
+   replicas: 3
    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0,
    snapshot:
       repository:

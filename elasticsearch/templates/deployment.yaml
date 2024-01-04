@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+   name: { { .Values.elasticsearch.name } }
+spec:
+   replicas: { { .Values.elasticsearch.replicas } }
+   selector:
+      matchLabels:
+         app: { { .Values.elasticsearch.name } }
+   template:
+      metadata:
+         labels:
+            app: { { .Values.elasticsearch.name } }
+      spec:
+         containers:
+            - name: elasticsearch
+              image: { { .Values.elasticsearch.name } }
+              ports:
+                 - containerPort: 9200
+              env:
+                 - name: discovery.type
+                   value: single-node
+              resources:
+                 limits:
+                    memory: "2Gi"
+                    cpu: "500m"
+                 requests:
+                    memory: "1Gi"
+                    cpu: "250m"
