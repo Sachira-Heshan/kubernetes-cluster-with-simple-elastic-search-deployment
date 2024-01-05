@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: { { .Values.elasticsearch.name } }-backup-config
+  name: {{ .Values.elasticsearch.name }}-backup-config
 data:
   backup-script.sh: |
     #!/bin/bash

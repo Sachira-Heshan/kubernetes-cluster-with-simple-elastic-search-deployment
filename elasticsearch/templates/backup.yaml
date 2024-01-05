@@ -1,18 +1,19 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
    name: {{.Values.elasticsearch.name}}-backup
 spec:
-   schedule: { { .Values.backup.schedule } }
+   schedule: {{ .Values.elasticsearch.snapshot.backup.schedule }}
    jobTemplate:
       spec:
          template:
             spec:
+               restartPolicy: OnFailure
                containers:
                   - name: elasticsearch-backup
-                    image: { { .Values.backup.image } }
+                    image: {{ .Values.elasticsearch.snapshot.backup.image }}
                     env:
                        - name: ELASTICSEARCH_URL
                          value: http://elasticsearch:9200
                        - name: SNAPSHOT_REPO
-                         value: { { .Values.backup.repository } }
+                         value: {{ .Values.elasticsearch.snapshot.repository }}

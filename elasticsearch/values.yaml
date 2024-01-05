@@ -10,3 +10,4 @@ elasticsearch:
       backup:
          schedule: "0 0 * * *" # Automated backup schedule
          retention: "7d" # Retain snapshots for 7 days
+         image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0 # Image which contain backup tools

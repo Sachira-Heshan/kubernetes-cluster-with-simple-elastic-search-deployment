@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-   name: { { .Values.elasticsearch.name } }
+   name: {{ .Values.elasticsearch.name }}
 spec:
-   replicas: { { .Values.elasticsearch.replicas } }
+   replicas: {{ .Values.elasticsearch.replicas }}
    selector:
       matchLabels:
-         app: { { .Values.elasticsearch.name } }
+         app: {{ .Values.elasticsearch.name }}
    template:
       metadata:
          labels:
-            app: { { .Values.elasticsearch.name } }
+            app: {{ .Values.elasticsearch.name }}
       spec:
          containers:
-            - name: { { .Values.elasticsearch.name } }
-              image: { { .Values.elasticsearch.image } }
+            - name: {{ .Values.elasticsearch.name }}
+              image: {{ .Values.elasticsearch.image }}
               ports:
                  - containerPort: 9200
               env:
