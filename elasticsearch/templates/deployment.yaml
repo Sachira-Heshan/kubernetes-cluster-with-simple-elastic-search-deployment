@@ -13,8 +13,8 @@ spec:
             app: { { .Values.elasticsearch.name } }
       spec:
          containers:
-            - name: elasticsearch
-              image: { { .Values.elasticsearch.name } }
+            - name: { { .Values.elasticsearch.name } }
+              image: { { .Values.elasticsearch.image } }
               ports:
                  - containerPort: 9200
               env:

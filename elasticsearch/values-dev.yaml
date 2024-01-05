@@ -1,11 +1,3 @@
 elasticsearch:
    namespace: dev
    replicas: 3
-   image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0,
-   snapshot:
-      repository:
-         type: "fs"
-         location: "/backup/elasticsearch-backups"
-      backup:
-         schedule: "0 0 * * *" # Automated backup schedule
-         retention: "7d" # Retain snapshots for 7 days

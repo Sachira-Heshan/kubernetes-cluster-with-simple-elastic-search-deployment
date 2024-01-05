@@ -4,7 +4,7 @@ metadata:
    name: { { .Values.elasticsearch.name } }
 spec:
    selector:
-      app: elasticsearch
+      app: { { .Values.elasticsearch.name } }
    ports:
       - protocol: TCP
         port: 9200
